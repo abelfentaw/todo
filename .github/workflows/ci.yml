@@ -14,20 +14,20 @@ jobs:
        matrix:
          node-version:[20.x, 22.x, 24.x]
 
-     steps:
-       - name: Checkout Code
-         uses: actions/checkout@v6
-
-       - name: Setup Node.js ${{ matrix.node-version }}
-         uses: actions/setup-node@v6
-         with: 
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-
-        - name: Install Dependecies
-          run: npm ci
-
-        - name: Run Linter
-          run: npm run lint
-        - name: Run Tests
-          run: npm test --if-posible
+  steps:
+     - name: Checkout Code
+       uses: actions/checkout@v6
+  
+     - name: Setup Node.js ${{ matrix.node-version }}
+       uses: actions/setup-node@v6
+       with: 
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+  
+      - name: Install Dependecies
+        run: npm ci
+  
+      - name: Run Linter
+        run: npm run lint
+      - name: Run Tests
+        run: npm test --if-posible
