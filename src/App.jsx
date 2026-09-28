@@ -19,8 +19,18 @@ export default function App() {
     setTodos(todos.filter(t => t.id !== id))
   }
 
+  const customDate=()=>{
+      const today = new Date();
+  
+  const year = today.getFullYear(); // 2026
+  const month = String(today.getMonth() + 1).padStart(2, '0'); // 09 (Zero-indexed)
+  const day = String(today.getDate()).padStart(2, '0'); // 28
+
+  return `${year}-${month}-${day}`; // "2026-09-28"
+  }
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-300 to-indigo-100 py-8 px-4">
       <div className="max-w-2xl mx-auto">
         <div className="bg-white rounded-lg shadow-lg p-6">
           <h1 className="text-3xl font-bold text-gray-800 mb-6">Todo App</h1>
@@ -32,7 +42,7 @@ export default function App() {
               onChange={(e) => setInput(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && addTodo()}
               placeholder="Add a new task..."
-              className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
             />
             <button
               onClick={addTodo}
@@ -76,6 +86,7 @@ export default function App() {
               Total: <span className="font-semibold">{todos.length}</span> | 
               Done: <span className="font-semibold">{todos.filter(t => t.done).length}</span>
             </p>
+            <p className='pr-4 gap-4'>today: {customDate()}</p>
           </div>
         </div>
       </div>
